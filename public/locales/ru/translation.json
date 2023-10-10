@@ -1,0 +1,17 @@
+{
+  "price": "сум",
+  "add_to_basket": "Добавить",
+  "search": "Поиск...",
+  "not_active": "Нет в наличии...",
+  "order_type": {
+    "shipping": "Доставка ",
+    "pickup": "Самовывоз "
+  },
+  "empty_basket": "в корзине пусто...",
+  "to_basket": "Перейти в корзину",
+  "in_your_basket": "У вас в корзине:",
+  "related": "Что-то ещё?",
+  "total": "Итого:",
+  "basket": "Корзина:",
+  "create_order": "Оформить заказ"
+}

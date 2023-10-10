@@ -1,0 +1,55 @@
+.basketinfo {
+  position: fixed;
+  background: #fff;
+  bottom: 0;
+  left: 50%;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  padding: 15px 20px 10px 20px;
+  max-width: 500px;
+  transform: translate(-50%, 0);
+  z-index: 90;
+}
+.basketinfo__wrapper {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr;
+  gap: 10px;
+}
+.basketinfo__info {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+  align-items: center;
+}
+.basketinfo__details {
+  font-size: 12px;
+  font-weight: 400;
+  display: grid;
+  grid-template: 1fr 1fr / 1fr;
+  gap: 10px;
+}
+.basketinfo__deliveryprice {
+}
+.basketinfo__basketprice {
+}
+.basketinfo__total {
+  justify-self: end;
+  font-size: 16px;
+  font-weight: 600;
+}
+.basketinfo__btn {
+  white-space: nowrap;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media (max-width: 367px) {
+  .basketinfo__details {
+    font-size: 10px;
+  }
+  .basketinfo__total {
+    font-size: 12px;
+  }
+}

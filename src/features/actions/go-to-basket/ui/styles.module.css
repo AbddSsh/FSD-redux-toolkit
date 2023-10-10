@@ -1,0 +1,26 @@
+.btn__wrapper {
+  display: grid;
+  grid-template: 1fr / minmax(20px, 30px) 1fr 0.5fr;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  width: 100%;
+}
+.btn__icon {
+  font-size: 20px;
+  justify-self: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn__text {
+  font-size: 14px;
+  font-weight: 600;
+  /* justify-self: start; */
+}
+.btn__price {
+  font-size: 12px;
+  font-weight: 500;
+  justify-self: end;
+}

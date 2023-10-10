@@ -1,0 +1,21 @@
+.btn {
+  white-space: nowrap;
+  height: 100%;
+  display: grid;
+}
+.btn__wrapper {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  padding: 5px 10px;
+  font-weight: 600;
+}
+.icon__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.count {
+  font-weight: 500;
+}

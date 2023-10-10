@@ -1,0 +1,126 @@
+.cardmodal {
+  background: #fff;
+  border-radius: 30px 30px 0px 0px;
+  box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 70%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: 500px;
+}
+.cardmodal__wrapper {
+  overflow: auto;
+  height: 85%;
+}
+.cardmodal__imgwrapper {
+  background: #ebebeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 35vh;
+  border-radius: 30px 30px 0 0;
+}
+.cardmodal__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 30px 30px 0 0;
+}
+.cardmodal__info {
+  margin: 10px;
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+.cardmodal__title {
+  font-size: 18px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cardmodal__description {
+  font-size: 14px;
+  font-weight: 400;
+}
+.cardmodal__price {
+  font-size: 16px;
+  font-weight: 500;
+}
+.cardmodal__types {
+  margin: 10px;
+  font-weight: 400;
+  padding-top: 10px;
+}
+.cardmodal__type {
+}
+.cardmodal__addblock {
+  background: #fff;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  z-index: 100;
+  padding: 3%;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.cardmodal__counter {
+  height: 100%;
+  font-size: 16px;
+  background: #e2e2e2;
+  border-radius: 25px;
+}
+.cardmodal__addbtn {
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+.hideicon {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  color: #747474;
+  font-size: 25px;
+  background: #ffffff;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background: #e6e6e6;
+  border-radius: 20px;
+}
+
+@media (max-width: 367px) {
+  .cardmodal__counter {
+    font-size: 14px;
+  }
+  .cardmodal__addbtn {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "price": "so'm",
+  "add_to_basket": "Qo'shish",
+  "search": "Qidirish...",
+  "not_active": "Hozircha yo'q...",
+  "order_type": {
+    "shipping": "Yetkazib berish ",
+    "pickup": "Kelib olish "
+  },
+  "empty_basket": "Savatcha bo'sh...",
+  "to_basket": "Savatchaga o'tish",
+  "in_your_basket": "Sizning savatingizda:",
+  "related": "Yana nimadur?",
+  "total": "Jami:",
+  "basket": "Savatcha:",
+  "create_order": "Buyurtma qilish"
+}

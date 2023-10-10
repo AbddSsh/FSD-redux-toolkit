@@ -1,0 +1,19 @@
+.header {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+.header__imgwrapper {
+  position: relative;
+  height: 10vw;
+  max-height: 50px;
+}
+.header__image {
+  width: 100%;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+}

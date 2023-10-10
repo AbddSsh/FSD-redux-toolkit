@@ -1,0 +1,10 @@
+.categories {
+  margin: 0px 10px;
+}
+.categories__wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 30px;
+  width: 100%;
+  overflow: auto;
+}
