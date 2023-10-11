@@ -14,29 +14,29 @@ interface ChangeQuantityBtnProps {
 
 export const ChangeQuantityBtn: FC<ChangeQuantityBtnProps> = observer(
   ({ increaseProductCount, decreaseProductCount, card, handleShowModal }) => {
-    const [isButtonDisabled, setButtonDisabled] = useState(false);
+    // const [isButtonDisabled, setButtonDisabled] = useState(false);
 
-    const handleButtonClick = (callback: () => void) => {
-      if (!isButtonDisabled) {
-        setButtonDisabled(true); // Блокируем кнопку
-        callback();
-      }
-    };
+    // const handleButtonClick = (callback: () => void) => {
+    //   if (!isButtonDisabled) {
+    //     setButtonDisabled(true); // Блокируем кнопку
+    //     callback();
+    //   }
+    // };
 
-    useEffect(() => {
-      // После каждой операции разблокируем кнопку через 0мс
-      const timeout = setTimeout(() => {
-        setButtonDisabled(false);
-      }, 0);
+    // useEffect(() => {
+    //   // После каждой операции разблокируем кнопку через 0мс
+    //   const timeout = setTimeout(() => {
+    //     setButtonDisabled(false);
+    //   }, 0);
 
-      return () => clearTimeout(timeout);
-    }, [card]);
+    //   return () => clearTimeout(timeout);
+    // }, [card]);
     return (
       <div className={styles.btn}>
         <div className={styles.btn__wrapper}>
           <span
             className={styles.icon__wrapper}
-            onClick={() => handleButtonClick(() => decreaseProductCount(card))}
+            onClick={() => decreaseProductCount(card)}
           >
             <Minus />
           </span>
@@ -45,15 +45,13 @@ export const ChangeQuantityBtn: FC<ChangeQuantityBtnProps> = observer(
           </span>
           <span
             className={styles.icon__wrapper}
-            onClick={() =>
-              handleButtonClick(() => {
-                if (handleShowModal) {
-                  handleShowModal();
-                } else {
-                  increaseProductCount(card);
-                }
-              })
-            }
+            onClick={() => {
+              if (handleShowModal) {
+                handleShowModal();
+              } else {
+                increaseProductCount(card);
+              }
+            }}
           >
             <Plus />
           </span>
