@@ -9,11 +9,11 @@ import { IBasketCard } from "shared/types";
 import ButtonMotion from "shared/motion/button-motion/buttonMotion";
 import Modal from "@mui/material/Modal";
 import { useTranslation } from "react-i18next";
-import { QueryParams } from "features/query-params";
 import {
-  basketSlice,
+  addItemToBasket,
   fetchBasket,
   fetchRelated,
+  removeItemFromBasket,
   useAppDispatch,
   useAppSelector,
 } from "shared/store";
@@ -31,27 +31,27 @@ export const Basket: FC = () => {
   );
 
   useEffect(() => {
-    const urlParams = QueryParams();
-    dispatch(basketSlice.actions.setQueryParams(urlParams));
-    dispatch(
-      fetchBasket({
-        userId: queryParams.userId,
-        latitude: queryParams.userLocation?.latitude,
-        longitude: queryParams.userLocation?.longitude,
-        restaurantLocationId: queryParams.restaurantLocationId,
-        orderType: queryParams.orderType,
-        language: queryParams.userLanguage,
-      })
-    );
-    dispatch(
-      fetchRelated({
-        restaurantId: queryParams.restaurantId,
-        latitude: queryParams.userLocation?.latitude,
-        longitude: queryParams.userLocation?.longitude,
-        language: queryParams.userLanguage,
-      })
-    );
-  }, []);
+    if (queryParams.userId) {
+      dispatch(
+        fetchBasket({
+          userId: queryParams.userId,
+          latitude: queryParams.userLocation?.latitude,
+          longitude: queryParams.userLocation?.longitude,
+          restaurantLocationId: queryParams.restaurantLocationId,
+          orderType: queryParams.orderType,
+          language: queryParams.userLanguage,
+        })
+      );
+      dispatch(
+        fetchRelated({
+          restaurantId: queryParams.restaurantId,
+          latitude: queryParams.userLocation?.latitude,
+          longitude: queryParams.userLocation?.longitude,
+          language: queryParams.userLanguage,
+        })
+      );
+    }
+  }, [queryParams]);
 
   useEffect(() => {
     if (basket.amount === 0) {
@@ -60,13 +60,81 @@ export const Basket: FC = () => {
   }, [basket.amount]);
 
   const addToBasket = (card: IBasketCard) => {
-    basketSlice.actions.addToBasket(card);
+    const addToBasketAsync = async () => {
+      try {
+        await dispatch(
+          addItemToBasket({
+            userId: queryParams.userId,
+            productId: card.product_id,
+            count: 1,
+            modification: card.modification,
+          })
+        );
+
+        await dispatch(
+          fetchBasket({
+            userId: queryParams.userId,
+            latitude: queryParams.userLocation?.latitude,
+            longitude: queryParams.userLocation?.longitude,
+            restaurantLocationId: queryParams.restaurantLocationId,
+            orderType: queryParams.orderType,
+            language: queryParams.userLanguage,
+          })
+        );
+      } catch (error) {}
+    };
+    addToBasketAsync();
   };
   const increaseProductCount = (card: IBasketCard) => {
-    basketSlice.actions.addToBasket(card);
+    const increaseProduct = async () => {
+      try {
+        await dispatch(
+          addItemToBasket({
+            userId: queryParams.userId,
+            productId: card.product_id,
+            count: 1,
+            modification: card.modification,
+          })
+        );
+
+        await dispatch(
+          fetchBasket({
+            userId: queryParams.userId,
+            latitude: queryParams.userLocation?.latitude,
+            longitude: queryParams.userLocation?.longitude,
+            restaurantLocationId: queryParams.restaurantLocationId,
+            orderType: queryParams.orderType,
+            language: queryParams.userLanguage,
+          })
+        );
+      } catch (error) {}
+    };
+    increaseProduct();
   };
   const decreaseProductCount = (card: IBasketCard) => {
-    basketSlice.actions.removeFromBasket(card);
+    const decreaseProduct = async () => {
+      try {
+        await dispatch(
+          removeItemFromBasket({
+            userId: queryParams.userId,
+            productId: card.product_id,
+            modification: card.modification,
+          })
+        );
+        await dispatch(
+          fetchBasket({
+            userId: queryParams.userId,
+            latitude: queryParams.userLocation?.latitude,
+            longitude: queryParams.userLocation?.longitude,
+            restaurantLocationId: queryParams.restaurantLocationId,
+            orderType: queryParams.orderType,
+            language: queryParams.userLanguage,
+          })
+        );
+      } catch (error) {}
+    };
+
+    decreaseProduct();
   };
 
   return (

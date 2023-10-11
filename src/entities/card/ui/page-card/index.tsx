@@ -94,7 +94,7 @@ export const PageCard: FC<PageCardProps> = ({
         setPageCard(card);
       }
     }
-  }, [basket.amount]);
+  }, [basket]);
 
   return (
     <ScrollTriggeredVertical time={0.5} delay={0}>

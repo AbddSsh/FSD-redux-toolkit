@@ -16,10 +16,10 @@ export const AdvBlock = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    if (queryParams.userId) {
       fetchAdvItems();
-    }, 200);
-  }, []);
+    }
+  }, [queryParams]);
 
   return (
     <div className={styles.advblock}>

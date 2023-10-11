@@ -12,8 +12,6 @@ type QueryParams = {
 
 export const QueryParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
-
-  // Создаем пустой объект queryParams
   const queryParams: QueryParams = {};
 
   // Добавляем ключи и значения только для существующих параметров запроса

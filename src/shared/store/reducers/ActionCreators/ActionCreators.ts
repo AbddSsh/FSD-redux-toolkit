@@ -1,4 +1,4 @@
-import { getBasket, getCatalog } from "shared/api";
+import { addItem, getBasket, getCatalog, removeItem } from "shared/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getRelated } from "shared/api/related";
 
@@ -88,6 +88,46 @@ export const fetchRelated = createAsyncThunk(
         language
       );
       return relatedData;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+type addItemBasket = {
+  userId: string | null | undefined;
+  productId: number;
+  count: number;
+  modification: number | null | undefined;
+};
+
+export const addItemToBasket = createAsyncThunk(
+  "basket/addItem",
+  async (
+    { userId, productId, count, modification }: addItemBasket,
+    thunkAPI
+  ) => {
+    try {
+      const response = await addItem(userId, productId, count, modification);
+      return response;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+type removeItemBasket = {
+  userId: string | null | undefined;
+  productId: number;
+  modification: number | null | undefined;
+};
+
+export const removeItemFromBasket = createAsyncThunk(
+  "basket/removeItem",
+  async ({ userId, productId, modification }: removeItemBasket, thunkAPI) => {
+    try {
+      const response = await removeItem(userId, productId, modification);
+      return response;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }

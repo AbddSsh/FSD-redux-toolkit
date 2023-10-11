@@ -57,37 +57,3 @@ export const catalogSlice = createSlice({
 });
 
 export default catalogSlice.reducer;
-
-// reducers: {
-//   catalogFetching(state) {
-//     state.isLoading = true;
-//   },
-//   catalogFetchingSuccess(state, action: PayloadAction<CatalogItem[]>) {
-//     state.isLoading = false;
-//     state.error = "";
-//     state.catalog = action.payload;
-//     state.filteredCatalog = action.payload;
-//   },
-//   catalogFetchingError(state, action) {
-//     state.isLoading = false;
-//     state.error = action.payload;
-//   },
-// },
-// extraReducers: {
-//   [fetchCatalog.pending.type]: (state) => {
-//     state.isLoading = true;
-//   },
-//   [fetchCatalog.fulfilled.type]: (
-//     state,
-//     action: PayloadAction<CatalogItem[]>
-//   ) => {
-//     state.isLoading = false;
-//     state.error = "";
-//     state.catalog = action.payload;
-//     state.filteredCatalog = action.payload;
-//   },
-//   [fetchCatalog.rejected.type]: (state, action) => {
-//     state.isLoading = false;
-//     state.error = action.payload;
-//   },
-// },

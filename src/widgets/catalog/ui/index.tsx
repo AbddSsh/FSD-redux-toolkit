@@ -3,13 +3,14 @@ import styles from "./styles.module.css";
 import { useEffect } from "react";
 import { IBasketCard, ICard } from "shared/types";
 import { CatalogSkeleton } from "shared/ui/skeletons/catalog-skeleton";
-import { QueryParams } from "features/query-params";
 import { Language } from "shared/config/languages-types";
 import i18n from "shared/config/i18n";
 import { setLanguage } from "shared/config/language";
 import {
-  basketSlice,
+  addItemToBasket,
+  fetchBasket,
   fetchCatalog,
+  removeItemFromBasket,
   useAppDispatch,
   useAppSelector,
 } from "shared/store";
@@ -19,34 +20,106 @@ export const Catalog = () => {
   const { filteredCatalog, isLoading, error } = useAppSelector(
     (state) => state.catalogReducer
   );
+  const { queryParams } = useAppSelector((state) => state.basketReducer);
 
   const changeLanguage = (language: Language) => {
     i18n.changeLanguage(language);
     setLanguage(language);
   };
   useEffect(() => {
-    const queryParams = QueryParams();
-    const lang =
-      queryParams.userLanguage === "uz" ? Language.Uzbek : Language.Russian;
-    changeLanguage(lang);
-    dispatch(
-      fetchCatalog({
-        restaurantId: queryParams.restaurantId,
-        latitude: queryParams.userLocation?.latitude,
-        longitude: queryParams.userLocation?.longitude,
-        language: queryParams.userLanguage,
-      })
-    );
-  }, []);
+    if (queryParams.userId) {
+      const lang =
+        queryParams.userLanguage === "uz" ? Language.Uzbek : Language.Russian;
+      changeLanguage(lang);
+      dispatch(
+        fetchCatalog({
+          restaurantId: queryParams.restaurantId,
+          latitude: queryParams.userLocation?.latitude,
+          longitude: queryParams.userLocation?.longitude,
+          language: queryParams.userLanguage,
+        })
+      );
+    }
+  }, [queryParams]);
+
   const addToBasket = (card: IBasketCard) => {
-    basketSlice.actions.addToBasket(card);
+    const addToBasketAsync = async () => {
+      try {
+        await dispatch(
+          addItemToBasket({
+            userId: queryParams.userId,
+            productId: card.product_id,
+            count: 1,
+            modification: card.modification,
+          })
+        );
+
+        await dispatch(
+          fetchBasket({
+            userId: queryParams.userId,
+            latitude: queryParams.userLocation?.latitude,
+            longitude: queryParams.userLocation?.longitude,
+            restaurantLocationId: queryParams.restaurantLocationId,
+            orderType: queryParams.orderType,
+            language: queryParams.userLanguage,
+          })
+        );
+      } catch (error) {}
+    };
+    addToBasketAsync();
   };
   const increaseProductCount = (card: IBasketCard) => {
-    basketSlice.actions.addToBasket(card);
+    const increaseProduct = async () => {
+      try {
+        await dispatch(
+          addItemToBasket({
+            userId: queryParams.userId,
+            productId: card.product_id,
+            count: 1,
+            modification: card.modification,
+          })
+        );
+
+        await dispatch(
+          fetchBasket({
+            userId: queryParams.userId,
+            latitude: queryParams.userLocation?.latitude,
+            longitude: queryParams.userLocation?.longitude,
+            restaurantLocationId: queryParams.restaurantLocationId,
+            orderType: queryParams.orderType,
+            language: queryParams.userLanguage,
+          })
+        );
+      } catch (error) {}
+    };
+    increaseProduct();
   };
   const decreaseProductCount = (card: IBasketCard) => {
-    basketSlice.actions.removeFromBasket(card);
+    const decreaseProduct = async () => {
+      try {
+        await dispatch(
+          removeItemFromBasket({
+            userId: queryParams.userId,
+            productId: card.product_id,
+            modification: card.modification,
+          })
+        );
+        await dispatch(
+          fetchBasket({
+            userId: queryParams.userId,
+            latitude: queryParams.userLocation?.latitude,
+            longitude: queryParams.userLocation?.longitude,
+            restaurantLocationId: queryParams.restaurantLocationId,
+            orderType: queryParams.orderType,
+            language: queryParams.userLanguage,
+          })
+        );
+      } catch (error) {}
+    };
+
+    decreaseProduct();
   };
+
   return (
     <>
       {isLoading ? (

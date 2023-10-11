@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IBasketCard, ICard } from "shared/types";
-import { addItem, removeItem } from "shared/api";
 import { fetchBasket, fetchRelated } from "./ActionCreators";
 
 interface BasketItems {
@@ -59,21 +58,6 @@ export const basketSlice = createSlice({
   reducers: {
     setQueryParams(state, action: PayloadAction<QueryParams>) {
       state.queryParams = action.payload;
-    },
-    addToBasket(state, action: PayloadAction<IBasketCard>) {
-      addItem(
-        state.queryParams.userId,
-        action.payload.product_id,
-        1,
-        action.payload.modification
-      );
-    },
-    removeFromBasket(state, action: PayloadAction<IBasketCard>) {
-      removeItem(
-        state.queryParams.userId,
-        action.payload.product_id,
-        action.payload.modification
-      );
     },
   },
   extraReducers: {
