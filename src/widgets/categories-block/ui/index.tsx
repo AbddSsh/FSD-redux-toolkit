@@ -28,23 +28,7 @@ export const CategoriesBlock = () => {
     };
   }, []);
 
-  // create categories from props
   const { categories } = useAppSelector((state) => state.catalogReducer);
-  // const [categories, setCategories] = useState<
-  //   { id: number; category: string }[]
-  // >([]);
-  // useEffect(() => {
-  //   if (catalog.length > 0) {
-  //     const newCategories = catalog.map((cat) => ({
-  //       id: cat?.id,
-  //       category: cat?.category,
-  //     }));
-  //     console.log(newCategories);
-  //     setCategories(newCategories);
-  //   }
-  // }, [catalog]);
-
-  console.log(categories);
 
   return (
     <div
