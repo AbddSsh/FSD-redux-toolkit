@@ -50,10 +50,13 @@ export const catalogSlice = createSlice({
       state.error = "";
       state.catalog = action.payload;
       state.filteredCatalog = action.payload;
-      action.payload.map((cat) => [
+      state.categories = [
         ...state.categories,
-        { id: cat.id, category: cat.category },
-      ]);
+        ...action.payload.map((cat) => ({
+          id: cat.id,
+          category: cat.category,
+        })),
+      ];
     },
     [fetchCatalog.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;

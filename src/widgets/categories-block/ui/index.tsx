@@ -53,6 +53,7 @@ export const CategoriesBlock = () => {
           ? `${styles.categoriesblock} ${styles.blockintop}`
           : styles.categoriesblock
       }
+      onClick={() => console.log(categories)}
     >
       {categories.length < 1 ? (
         <CategoriesBlockSkeleton />

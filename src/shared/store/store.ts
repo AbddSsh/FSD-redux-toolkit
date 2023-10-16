@@ -1,8 +1,4 @@
-import {
-  combineReducers,
-  configureStore,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import catalogReducer from "./reducers/CatalogSlice";
 import basketReducer from "./reducers/BasketSlice";
 import { catalogAPI } from "./services/CatalogService";
