@@ -1,9 +1,16 @@
-import styles from "./styles.module.css";
-
-const NotFoundPage = () => (
-  <div>
-    <h1>Страница не найдена...</h1>
-  </div>
-);
-
+const NotFoundPage = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
+    >
+      <h3>Страница не найдена...</h3>
+    </div>
+  );
+};
 export default NotFoundPage;

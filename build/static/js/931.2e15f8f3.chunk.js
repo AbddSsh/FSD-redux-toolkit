@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwebapp_food_react_fsd=self.webpackChunkwebapp_food_react_fsd||[]).push([[931],{3931:function(e,t,n){n.r(t);var s=n(184);t.default=function(){return(0,s.jsx)("div",{style:{display:"flex",justifyContent:"center",alignItems:"center",height:"100vh",width:"100vw"},children:(0,s.jsx)("h3",{children:"\u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u0430..."})})}}}]);
+//# sourceMappingURL=931.2e15f8f3.chunk.js.map
