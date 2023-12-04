@@ -15,15 +15,3 @@ export const Routing = () => {
     </Routes>
   );
 };
-
-{
-  /* <Routes>
-{user.isAuth &&
-  authRoutes.map(({ path, element }) => (
-    <Route exact key={path} path={path} element={element} />
-  ))}
-{publicRoutes.map(({ path, element }) => (
-  <Route exact key={path} path={path} element={element} />
-))}
-</Routes> */
-}

@@ -64,7 +64,9 @@ export const Catalog = () => {
             language: queryParams.userLanguage,
           })
         );
-      } catch (error) {}
+      } catch (error) {
+        console.log("Что-то пошло не так...");
+      }
     };
     addToBasketAsync();
   };

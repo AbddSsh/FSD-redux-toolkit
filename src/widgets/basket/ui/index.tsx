@@ -133,7 +133,6 @@ export const Basket: FC = () => {
         );
       } catch (error) {}
     };
-
     decreaseProduct();
   };
 
