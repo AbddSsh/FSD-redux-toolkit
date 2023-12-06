@@ -1,0 +1,9 @@
+version: "3.5"
+
+services:
+  app:
+    container_name: restaurant-ui
+    build: .
+    ports:
+      - "3000:3000"
+    restart: on-failure
